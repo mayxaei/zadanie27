@@ -1,23 +1,28 @@
 function SUMA() {
-    let a = parseInt(prompt("Podaj pierwszą liczbę całkowitą:"));
-    let b = parseInt(prompt("Podaj drugą liczbę całkowitą:"));
-    alert("Suma: " + (a + b));
+    let a = Number(document.getElementById('liczba1').value);
+    let b = Number(document.getElementById('liczba2').value);
+    document.getElementById('wynik1').innerHTML = "Suma: " + (a + b);
 }
 
-function PODSTAWY() {
-    let a = parseFloat(prompt("Podaj liczbę a:"));
-    let b = parseFloat(prompt("Podaj liczbę b:"));
-    console.log("Różnica:", a - b);
-    console.log("Iloczyn:", a * b);
-    console.log("Iloraz:", b !== 0 ? a / b : "Nie dziel przez zero!");
+function PODSTAWY() {///////////////
+    let a = Number(document.getElementById('liczba3').value);
+    let b = Number(document.getElementById('liczba4').value);
+    document.getElementById('wynik2').innerHTML = "Różnica: " + (a - b);
+    document.getElementById('wynik2').innerHTML += "<br>Iloczyn:  " + a * b;
+    if (b !== 0) {
+        let iloraz = a / b;
+        return iloraz
+    } else {
+        "Błąd (dzielenie przez zero)";
+    }
+    document.getElementById("wynik2").innerHTML += "Iloraz:  " + iloraz;
 }
 
-function KALKULATOR() {
-    let a = parseFloat(prompt("Podaj pierwszą liczbę:"));
-    let b = parseFloat(prompt("Podaj drugą liczbę:"));
-    let operacja = prompt("Wybierz działanie (+, -, *, /):");
+function KALKULATOR() {//////////
+    let a = Number(document.getElementById('liczba5').value);
+    let b = Number(document.getElementById('liczba6').value);
+    let operacja = prompt("Wybierz działanie (+, -, * , /):");
     let wynik;
-
     switch(operacja) {
         case '+': wynik = a + b; break;
         case '-': wynik = a - b; break;
@@ -25,44 +30,50 @@ function KALKULATOR() {
         case '/': wynik = b !== 0 ? a / b : "Błąd (dzielenie przez 0)"; break;
         default: wynik = "Nieznana operacja";
     }
-    document.getElementById("wynik").innerHTML = "Wynik: " + wynik;
+    document.getElementById("wynik3").innerHTML = "Wynik: " + wynik;
 }
 
 function MAKS() {
-    let a = parseFloat(prompt("Podaj pierwszą liczbę:"));
-    let b = parseFloat(prompt("Podaj drugą liczbę:"));
-    let c = parseFloat(prompt("Podaj trzecią liczbę:"));
+    let a = Number(document.getElementById('liczba7').value);
+    let b = Number(document.getElementById('liczba8').value);
+    let c = Number(document.getElementById('liczba9').value);
     let max = Math.max(a, b, c);
-    alert("Największa liczba to: " + max);
+    document.getElementById("wynik4").innerHTML = "Największa liczba to: " + max;
 }
 
 function WZROST() {
-    let h = parseInt(prompt("Podaj wzrost w cm:"));
-    if (h < 150) alert("Niski");
-    else if (h > 180) alert("Wysoki");
-    else alert("Średni");
+    let h = Number(document.getElementById('liczba10').value);
+    if (h < 150) {
+        document.getElementById("wynik5").innerHTML = "Niski";
+    } else if (h > 180) {
+        document.getElementById("wynik5").innerHTML = "Wysoki";
+    } else {
+        document.getElementById("wynik5").innerHTML = "Średni";
+    }
 }
 
 function BMI() {
-    let h = parseFloat(prompt("Podaj wzrost w cm:")) / 100;
-    let w = parseFloat(prompt("Podaj wagę w kg:"));
+    let h = Number(document.getElementById('liczba11').value);
+    h = h / 100;
+    let w = Number(document.getElementById('liczba12').value);
     let bmi = w / (h * h);
     let komentarz = "";
-
     if (bmi < 18.5) komentarz = "za mało!";
     else if (bmi > 25) komentarz = "za dużo!";
     else komentarz = "OK!";
-
-    document.getElementById("wynik").innerHTML = `BMI: ${bmi.toFixed(2)} - ${komentarz}`;
+    document.getElementById("wynik6").innerHTML = "BMI: " + bmi.toFixed(2) + " - " + komentarz;
 }
 
-function STARSZY() {
-    let d1 = new Date(document.getElementById("data1").value);
-    let d2 = new Date(document.getElementById("data2").value);
-
-    if (d1 < d2) alert("Pierwsza osoba jest starsza");
-    else if (d1 > d2) alert("Druga osoba jest starsza");
-    else alert("Są w tym samym wieku");
+function STARSZY() {////////////html
+    let data1 = new Date(document.getElementById("data1").value);
+    let data2 = new Date(document.getElementById("data2").value);
+    if (data1 < data2) {
+        document.getElementById("wynik7").innerHTML = "Pierwsza osoba jest starsza";
+    } else if (data1 > data2) {
+        document.getElementById("wynik7").innerHTML = "Druga osoba jest starsza";
+    } else {
+        document.getElementById("wynik7").innerHTML = "Są w tym samym wieku";
+    }
 }
 
 function PRZESTEPNY(rok) {
@@ -75,29 +86,26 @@ function PRZESTEPNY(rok) {
 
 function SILA() {
     let h = document.getElementById("haslo").value;
-    let info = document.getElementById("info");
     let msg = "hasło mocne";
-
-    if (h.length < 8) msg = "hasło średnie";
-    if (h.length <= 4) msg = "hasło słabe";
-
+    if (h.length < 8) {
+        msg = "hasło średnie";
+    } else if (h.length <= 4) {
+        msg = "hasło słabe";
+    }
     let hasDigit = /\d/.test(h);
     let hasUpper = /[A-Z]/.test(h);
     let hasLower = /[a-z]/.test(h);
     let hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(h);
-
     if (!hasDigit || !hasUpper || !hasLower || !hasSpecial) {
         msg = "hasło słabe";
     }
-
-    info.innerText = "Siła: " + msg;
+    document.getElementById("wynik9").innerText = "Siła: " + msg;
 }
 
 function TROJKAT() {
-    let a = parseInt(prompt("Bok a:"));
-    let b = parseInt(prompt("Bok b:"));
-    let c = parseInt(prompt("Bok c:"));
-
+    let a = Number(document.getElementById('liczba13').value);
+    let b = Number(document.getElementById('liczba14').value);
+    let c = Number(document.getElementById('liczba15').value);
     if (a + b > c && a + c > b && b + c > a) {
         console.log("Można utworzyć trójkąt");
     } else {
@@ -106,14 +114,12 @@ function TROJKAT() {
 }
 
 function SZYFR() {
-    let input = document.getElementById("tekst").value;
+    let tekst = document.getElementById("tekst").value;
     let wynik = "";
     let alfabet = "abcdefghijklmnopqrstuvwxyz";
-
-    for (let i = 0; i < input.length; i++) {
-        let litera = input[i].toLowerCase();
+    for (let i = 0; i < tekst.length; i++) {
+        let litera = tekst[i].toLowerCase();
         let index = alfabet.indexOf(litera);
-
         if (index !== -1) {
             let nowyIndex = (index + 2) % 26;
             wynik += alfabet[nowyIndex];
@@ -121,5 +127,5 @@ function SZYFR() {
             wynik += litera;
         }
     }
-    document.getElementById("zaszyfrowane").innerText = wynik;
+    document.getElementById("wynik11").innerText = wynik;
 }
