@@ -1,39 +1,46 @@
 function SUMA() {
+    document.getElementById('przycisk-zadanie-1').disabled = true;
     let a = Number(document.getElementById('liczba1').value);
     let b = Number(document.getElementById('liczba2').value);
     document.getElementById('wynik1').innerHTML = "Suma: " + (a + b);
 }
 
-function PODSTAWY() {///////////////
+function PODSTAWY() {
+    document.getElementById('przycisk-zadanie-2').disabled = true;
     let a = Number(document.getElementById('liczba3').value);
     let b = Number(document.getElementById('liczba4').value);
     document.getElementById('wynik2').innerHTML = "Różnica: " + (a - b);
-    document.getElementById('wynik2').innerHTML += "<br>Iloczyn:  " + a * b;
+    document.getElementById('wynik2').innerHTML += "<br>Iloczyn:  " + (a * b);
     if (b !== 0) {
         let iloraz = a / b;
-        return iloraz
+        document.getElementById("wynik2").innerHTML += "<br>Iloraz:  " + iloraz;
     } else {
-        "Błąd (dzielenie przez zero)";
+        document.getElementById("wynik2").innerHTML += "Nie można dzielić przez zero";
     }
-    document.getElementById("wynik2").innerHTML += "Iloraz:  " + iloraz;
 }
 
-function KALKULATOR() {//////////
+function KALKULATOR() {
+    document.getElementById('przycisk-zadanie-3').disabled = true;
     let a = Number(document.getElementById('liczba5').value);
     let b = Number(document.getElementById('liczba6').value);
-    let operacja = prompt("Wybierz działanie (+, -, * , /):");
+    let operacja = document.getElementById('operacja').value;
     let wynik;
     switch(operacja) {
         case '+': wynik = a + b; break;
         case '-': wynik = a - b; break;
         case '*': wynik = a * b; break;
-        case '/': wynik = b !== 0 ? a / b : "Błąd (dzielenie przez 0)"; break;
+        case '/': if (b !== 0) {
+            wynik = a / b;
+        } else {
+            wynik = "Nie można dzielić przez zero";
+        } break;
         default: wynik = "Nieznana operacja";
     }
     document.getElementById("wynik3").innerHTML = "Wynik: " + wynik;
 }
 
 function MAKS() {
+    document.getElementById('przycisk-zadanie-4').disabled = true;
     let a = Number(document.getElementById('liczba7').value);
     let b = Number(document.getElementById('liczba8').value);
     let c = Number(document.getElementById('liczba9').value);
@@ -42,6 +49,7 @@ function MAKS() {
 }
 
 function WZROST() {
+    document.getElementById('przycisk-zadanie-5').disabled = true;
     let h = Number(document.getElementById('liczba10').value);
     if (h < 150) {
         document.getElementById("wynik5").innerHTML = "Niski";
@@ -53,6 +61,7 @@ function WZROST() {
 }
 
 function BMI() {
+    document.getElementById('przycisk-zadanie-6').disabled = true;
     let h = Number(document.getElementById('liczba11').value);
     h = h / 100;
     let w = Number(document.getElementById('liczba12').value);
@@ -64,19 +73,21 @@ function BMI() {
     document.getElementById("wynik6").innerHTML = "BMI: " + bmi.toFixed(2) + " - " + komentarz;
 }
 
-function STARSZY() {////////////html
+function STARSZY() {
+    document.getElementById('przycisk-zadanie-7').disabled = true;
     let data1 = new Date(document.getElementById("data1").value);
     let data2 = new Date(document.getElementById("data2").value);
     if (data1 < data2) {
-        document.getElementById("wynik7").innerHTML = "Pierwsza osoba jest starsza";
+        alert("Pierwsza osoba jest starsza");
     } else if (data1 > data2) {
-        document.getElementById("wynik7").innerHTML = "Druga osoba jest starsza";
+        alert("Druga osoba jest starsza");
     } else {
-        document.getElementById("wynik7").innerHTML = "Są w tym samym wieku";
+        alert("Są w tym samym wieku");
     }
 }
 
 function PRZESTEPNY(rok) {
+    document.getElementById('przycisk-zadanie-8').disabled = true;
     if ((rok % 4 === 0 && rok % 100 !== 0) || (rok % 400 === 0)) {
         console.log(rok + " jest przestępny");
     } else {
@@ -85,6 +96,7 @@ function PRZESTEPNY(rok) {
 }
 
 function SILA() {
+    document.getElementById('przycisk-zadanie-9').disabled = true;
     let h = document.getElementById("haslo").value;
     let msg = "hasło mocne";
     if (h.length < 8) {
@@ -103,6 +115,7 @@ function SILA() {
 }
 
 function TROJKAT() {
+    document.getElementById('przycisk-zadanie-10').disabled = true;
     let a = Number(document.getElementById('liczba13').value);
     let b = Number(document.getElementById('liczba14').value);
     let c = Number(document.getElementById('liczba15').value);
@@ -114,6 +127,7 @@ function TROJKAT() {
 }
 
 function SZYFR() {
+    document.getElementById('przycisk-zadanie-11').disabled = true;
     let tekst = document.getElementById("tekst").value;
     let wynik = "";
     let alfabet = "abcdefghijklmnopqrstuvwxyz";
@@ -127,5 +141,5 @@ function SZYFR() {
             wynik += litera;
         }
     }
-    document.getElementById("wynik11").innerText = wynik;
+    document.getElementById("wynik11").innerText = "Zaszyfrowany: " + wynik;
 }
